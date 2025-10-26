@@ -182,7 +182,7 @@ const needrerender = {
                       .join('.')}</p>
                   </div>
                 </div>
-                <div class="relative">
+                <div class="relative z-20">
                   <button
                     class="bg-white hover:bg-graybg size-8 rounded-lg flex justify-center items-center border-[1px] border-strk ulpopcb relative z-10"
                   >
@@ -190,7 +190,7 @@ const needrerender = {
                   </button>
                   <!-- there dot -->
                   <ul
-                    class="flex flex-col gap-4 p-3 rounded-lg bg-white dsdb min-w-[140px] sm:min-w-[170px] md:min-w-[200px] absolute top-full right-0 mt-3 ulpop hidden z-50"
+                    class="flex flex-col gap-4 p-3 rounded-lg bg-white dsdb min-w-[140px] sm:min-w-[170px] md:min-w-[200px] absolute top-full right-0 mt-3 ulpop hidden z-20"
                   >
                   <!-- visit list item -->
                     <li class="flex items-center gap-2.5 cursor-pointer" id="visit">
