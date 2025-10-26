@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./assets/images/logo-light-theme.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>project300marksjs</title>
+  </head>
+  <body class="bg-graybg">
+    <div id="app" class="flex justify-between gap-0.5 relative">
+      <!--  left side -->
+      <aside
+        id="leftside"
+        class="py-4 px-2.5 lg:min-w-[290px] h-screen min-w-[250px] bg-white scroll-hide flex flex-col gap-1 lg:relative absolute -left-[500px] transition-all duration-300 lg:left-0 top-0 z-50"
+      >
+        <!-- head title and icon -->
+        <div class="flex bg-amber-60 justify-between items-center gap-3">
+          <img src="./assets/images/logo-light-theme.svg" alt="icon" />
+          <button class="p-2.5 rounded-lg border-[1px] border-strk lg:hidden" id="close">
+            <img src="./assets/images/icon-close.svg" alt="close icon" class="size-5" />
+          </button>
+        </div>
+        <!-- home and archive -->
+        <div class="flex flex-col gap-1 my-1">
+          <!-- home for icons -->
+          <div
+            class="flex items-center gap-1 bg-[#E8F0EF] px-2 py-1.5 rounded-md cursor-pointer select-none"
+            id="homepage"
+          >
+            <div id="hactive" class="size-3 rounded-full bg-green-600 mr-2"></div>
+            <img src="./assets/images/icon-home.svg" alt="home" />
+            <p>Home</p>
+          </div>
+          <!-- archive for icon -->
+          <div
+            class="flex items-center gap-4 justify-between bg-[#E8F0EF] px-2 py-1.5 rounded-md cursor-pointer select-none"
+            id="archivepage"
+          >
+            <div class="flex items-center gap-1">
+              <div id="aactive" class="size-3 rounded-full bg-green-600 mr-2 hidden"></div>
+              <img src="./assets/images/icon-archive.svg" alt="home" />
+              <p>Archive</p>
+            </div>
+            <div
+              class="size-5 rounded-full font-bold text-red-500 bg-white text-xs flex justify-center items-center"
+              id="archivecount"
+            ></div>
+          </div>
+        </div>
+        <!-- tags -->
+        <div class="flex flex-col flex-1 min-h-0 my-3">
+          <p class="manrope text-[12px] font-bold text-[#4D4D4D] mb-3 px-2">TAGS</p>
+          <div id="tags" class="space-y-3 overflow-y-auto flex-1 scroll-hide">
+            <!-- অনেক tags -->
+          </div>
+        </div>
+      </aside>
+      <!-- bigdiolog box -->
+
+      <div
+        id="bigdiolog"
+        class="fixed top-1/2 left-1/2 -translate-1/2 bg-white px-8 py-4 rounded-xl dsdb min-w-[300px] space-y-1.5 placeholder:manrope placeholder:font-medium placeholder:text-sm placeholder:text-font manrope font-medium text-sm text-font z-50 hidden"
+      >
+        <!-- close button -->
+        <button class="flex justify-center items-center absolute top-2 right-2" id="bigdiologclose">
+          <img src="./assets/images/icon-close.svg" alt="close icon" class="size-5" />
+        </button>
+        <!-- main context -->
+        <div id="diolog-content" class="flex flex-col gap-1.5"></div>
+        <!-- button set -->
+        <div class="flex justify-end items-center gap-2.5">
+          <!-- cancel button -->
+          <button
+            id="bigdiologcancel"
+            class="p-2.5 rounded-sm border-[1px] border-solid border-strk manrope font-semibold text-[16px] text-font1"
+          >
+            Cancel
+          </button>
+          <!-- submit type button -->
+          <button
+            id="bigdiologsubmit"
+            class="p-2.5 rounded-sm bg-accent manrope font-semibold text-[16px] text-white"
+          >
+            Ok
+          </button>
+        </div>
+      </div>
+
+      <!-- login functionality -->
+      <div
+        class="h-screen w-screen fixed inset-0 bg-[#E8F0EF] flex justify-center items-center z-[1000] dsdb"
+        id="logindiv"
+      >
+        <!-- main div -->
+        <div class="bg-white p-5 rounded-lg space-y-3.5">
+          <!-- logo main -->
+          <img src="./assets/images/logo-light-theme.svg" alt="logo" />
+          <!-- heading -->
+          <!-- txt part -->
+          <div class="flex flex-col gap-1.5">
+            <h3 class="manrope text-2xl font-semibold text-font1">Log in to your account</h3>
+            <p class="manrope text-sm font-medium text-font2">
+              Welcome back! Please enter your details.
+            </p>
+          </div>
+          <form id="loginform" class="inputdiv flex flex-col gap-3">
+            <div class="flex flex-col gap-1">
+              <label for="email" class="manrope text-sm font-semibold text-font1">Email</label>
+              <input
+                type="email"
+                id="email"
+                required
+                class="border-[1px] border-[#899492] p-3 rounded-md min-w-[200px] sm:min-w-[260px] md:min-w-[380px] h-[40px] sm:h-[45px]"
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="password" class="manrope text-sm font-semibold text-font1"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                required
+                class="border-[1px] border-[#899492] p-3 rounded-md min-w-[200px] sm:min-w-[260px] md:min-w-[380px] h-[40px] sm:h-[45px]"
+              />
+            </div>
+            <button class="bg-accent h-[40px] sm:h-[45px] rounded-md" type="submit">
+              <p class="manrope font-semibold text-[16px] text-white">Log in</p>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- blur bg -->
+      <div class="w-screen h-screen backdrop-blur-xs fixed inset-0 z-10 hidden" id="blur"></div>
+      <!-- right side -->
+      <div id="rightside" class="grow flex flex-col h-screen">
+        <!-- header section -->
+        <header id="headerofbookmark" class="bg-white px-8 py-3 flex justify-between items-center">
+          <!-- hamburger and serach group -->
+          <div class="flex items-center gap-3">
+            <!-- hamberger icon -->
+            <button
+              class="lg:hidden p-2.5 rounded-lg border-[1px] border-strk transition-all duration-300 hover:bg-graybg"
+              id="hammenu"
+            >
+              <img
+                src="./assets/images/icon-menu-hamburger.svg"
+                alt="menu hamburger"
+                class="size-5"
+              />
+            </button>
+            <!-- search bok -->
+            <div
+              class="has-focus:bg-graybg focus-visible:bg-graybg active:bg-graybg bg-white border-[1px] border-strk2 w-[190px] h-10 md:w-[320px] sm:w-[280px] md:h-[45px] flex items-center px-2.5 gap-2 rounded-lg"
+            >
+              <img src="./assets/images/icon-search.svg" alt="search-icon" class="size-5" />
+              <input
+                type="text"
+                class="bg-blue-5 grow focus:border-0 focus:outline-0"
+                placeholder="Search"
+                id="search"
+              />
+            </div>
+          </div>
+          <!-- div for profile setup -->
+          <div class="flex items-center gap-4">
+            <!-- add bookmark -->
+            <div
+              class="bg-mainbg lg:w-[169px] lg:h-[46px] flex items-center gap-1 rounded-sm cursor-pointer select-none px-3 py-2 justify-center"
+              id="AddBookmark"
+            >
+              <img src="./assets/images/plus.png" alt="add icon" />
+              <h3 class="text-[16px] font-semibold manrope text-white hidden sm:block">
+                Add Bookmark
+              </h3>
+            </div>
+            <!-- profile icon -->
+            <button>
+              <img
+                src="./assets/images/image-avatar.webp"
+                alt="profile"
+                class="size-10 rounded-full"
+              />
+            </button>
+          </div>
+        </header>
+        <!-- bookmarks section-->
+        <section class="px-6 pt-6 grow flex flex-col min-h-0">
+          <!-- sort and head bar -->
+          <div id="bar" class="flex justify-between items-center">
+            <div>
+              <h2 class="text-2xl font-bold manrope text-font1">
+                <span class="inline" id="resulttitle">All bookmarks</span
+                ><span class="inline" id="resultfor"></span>
+              </h2>
+            </div>
+            <div class="relative flex justify-center items-center z-10">
+              <button
+                id="sort"
+                class="p-2 rounded-lg flex gap-1 items-center border-[1px] border-[#C0CFCC]"
+              >
+                <img src="./assets/images/icon-sort.svg" alt="sort-icon" />
+                <p class="text-[16px] manrope font-semibold">Sort by</p>
+              </button>
+              <!-- sortby diolog box -->
+              <div
+                id="sortDialog"
+                class="absolute bg-[#fff] p-2 rounded-xl flex-col gap-1.5 md:min-w-[200px] min-w-[150px] top-[100%] right-0 mt-2 border-[1px] border-[#E8F0EF] dsdb hidden"
+                style="right: 0"
+              >
+                <!-- Recently added  -->
+                <div
+                  class="flex justify-between p-2 rounded-lg items-center gap-2 cursor-pointer"
+                  data-sort="ra"
+                >
+                  <p class="text-font2 text-sm manrope font-semibold">Recently added</p>
+                  <img
+                    src="./assets/images/icon-check.svg"
+                    alt="cheak-icon"
+                    class="size-5 hidden"
+                  />
+                </div>
+                <!-- Recently visited -->
+                <div
+                  class="flex justify-between p-2 rounded-lg items-center cursor-pointer"
+                  data-sort="rv"
+                >
+                  <p class="text-font2 text-sm manrope font-semibold">Recently visited</p>
+                  <img
+                    src="./assets/images/icon-check.svg"
+                    alt="cheak-icon"
+                    class="size-5 hidden"
+                  />
+                </div>
+                <div
+                  class="flex justify-between p-2 rounded-lg items-center cursor-pointer"
+                  data-sort="mv"
+                >
+                  <p class="text-font2 text-sm manrope font-semibold">Most visited</p>
+                  <img
+                    src="./assets/images/icon-check.svg"
+                    alt="cheak-icon"
+                    class="size-5 hidden"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- div container of cards -->
+          <div class="my-4 grid-auto-fit-300 overflow-y-auto scroll-hide" id="cardcontainer">
+            <!-- single div for eash card -->
+            <div
+              class="card min-h-[240px] bg-white rounded-xl p-2.5 flex flex-col justify-between gap-2"
+            >
+              `
+              <!-- head section of card -->
+              <div class="flex justify-between items-center gap-2 cursor-pointer cardhead">
+                <div class="flex items-center gap-2.5">
+                  <img
+                    src="${dt.favicon}"
+                    alt="prontendmentor"
+                    class="size-[44px] rounded-lg object-cover border-[1px] border-strk"
+                  />
+                  <div class="flex flex-col justify-between py-1">
+                    <h3 class="text-xl font-bold manrope text-font1">${dt.title}</h3>
+                    <p class="text-font2 font-medium text-xs">
+                      ${dt.url .split('.') .slice(1) .join('.')}
+                    </p>
+                  </div>
+                </div>
+                <!-- menu and there dot functionality -->
+                <div class="relative">
+                  <button
+                    class="bg-white hover:bg-graybg size-8 rounded-lg flex justify-center items-center border-[1px] border-strk"
+                  >
+                    <img src="./assets/images/icon-menu-bookmark.svg" alt="menu" class="size-5" />
+                  </button>
+                  <!-- there dot -->
+                  <ul
+                    class="flex flex-col gap-4 p-3 rounded-lg bg-white dsdb min-w-[140px] sm:min-w-[170px] md:min-w-[200px] absolute top-full right-0 mt-3"
+                  >
+                    <!-- visit list item -->
+                    <li class="flex items-center gap-2.5 cursor-pointer" id="visit">
+                      <img
+                        src="./assets/images/icon-visit.svg"
+                        alt="icon-visited"
+                        class="size-5 object-cover"
+                      />
+                      <p class="manrope font-semibold text-sm text-font2">Visit</p>
+                    </li>
+                    <!-- copy url -->
+                    <li class="flex items-center gap-2.5 cursor-pointer" id="copyurl">
+                      <img
+                        src="./assets/images/icon-copy.svg"
+                        alt="icon-visited"
+                        class="size-5 object-cover"
+                      />
+                      <p class="manrope font-semibold text-sm text-font2">Copy URL</p>
+                    </li>
+                    <!-- unpin -->
+                    <li class="flex items-center gap-2.5 cursor-pointer" id="unpine">
+                      <img
+                        src="./assets/images/icon-unpin.svg"
+                        alt="icon-visited"
+                        class="size-5 object-cover"
+                      />
+                      <p class="manrope font-semibold text-sm text-font2">Unpin</p>
+                    </li>
+                    <!-- edit list item -->
+                    <li class="flex items-center gap-2.5 cursor-pointer" id="edit">
+                      <img
+                        src="./assets/images/icon-edit.svg"
+                        alt="icon-visited"
+                        class="size-5 object-cover"
+                      />
+                      <p class="manrope font-semibold text-sm text-font2">Edit</p>
+                    </li>
+                    <!-- archive list item -->
+                    <li class="flex items-center gap-2.5 cursor-pointer" id="archive">
+                      <img
+                        src="./assets/images/icon-archive.svg"
+                        alt="icon-visited"
+                        class="size-5 object-cover"
+                      />
+                      <p class="manrope font-semibold text-sm text-font2">Archive</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id="divider" class="h-[1px] bg-[#DDE9E7]"></div>
+              <!-- middle part of card -->
+              <div class="space-y-3">
+                <!-- description -->
+                <p class="manrope text-sm font-medium text-font2" id="description180">
+                  ${ dt.description.length > 180 ? dt.description.slice(0, 181) + '...' :
+                  dt.description }
+                </p>
+                <!-- tags -->
+                <div class="flex items-center gap-2 tagsholder"></div>
+              </div>
+              <div id="dividerf" class="h-[1px] bg-[#DDE9E7] -mx-3"></div>
+              <!-- downpart of card -->
+              <div id="downofcard" class="flex justify-between items-center gap-2">
+                <!-- seen and date -->
+                <div class="flex items-center gap-3">
+                  <!-- seen part -->
+                  <div class="flex items-center gap-1">
+                    <img
+                      src="./assets/images/icon-visit-count.svg"
+                      alt="icon eye"
+                      class="size-5 block"
+                    />
+                    <p id="visited-count" class="manrope font-medium text-xs text-font2">
+                      ${ dt.visitCount }
+                    </p>
+                  </div>
+                  <!-- last visited part -->
+                  <div class="flex items-center gap-1">
+                    <img
+                      src="./assets/images/icon-last-visited.svg"
+                      alt="icon last visited"
+                      class="size-5 block"
+                    />
+                    <p id="last-visited" class="manrope font-medium text-xs text-font2">
+                      ${new Date( dt.lastVisited ) .toLocaleDateString('en-GB', { day: '2-digit',
+                      month: 'short' }) .replace(',', '')}
+                    </p>
+                  </div>
+                  <!-- creted part -->
+                  <div class="flex items-center gap-1">
+                    <img
+                      src="./assets/images/icon-created.svg"
+                      alt="icon created"
+                      class="size-5 block"
+                    />
+                    <p id="created" class="manrope font-medium text-xs text-font2">
+                      ${new Date( dt.createdAt ) .toLocaleDateString('en-GB', { day: '2-digit',
+                      month: 'short' }) .replace(',', '')}
+                    </p>
+                  </div>
+                </div>
+                <!-- pin part -->
+                <img
+                  src="./assets/images/icon-pin.svg"
+                  alt="pin icon"
+                  class="size-5 block object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

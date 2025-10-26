@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme {
+  --color-font1: #051513;
+  --color-font2: #4c5c59;
+  --color-graybg: #e8f0ef;
+  --color-mainbg: #013c3b;
+  --color-strk: #c0cfcc;
+  --color-strk2: #dde9e7;
+  --color-accent:#014745;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../assets/fonts/Manrope/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@layer utilities {
+  .manrope {
+    font-family: 'Manrope', sans-serif !important;
+  }
+  .grid-auto-fit-300 {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .scroll-hide {
+    scrollbar-width: none;
+  }
+
+  .scroll-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .dsdb {
+    filter: drop-shadow(0 6px 14px #222627);
+  }
+}
+
+@layer base {
+  button {
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+.roboto,
+* {
+  font-family: 'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
+
+#sortDialog {
+  position: absolute !important;
+  top: 100%;
+  right: 0;
+}
